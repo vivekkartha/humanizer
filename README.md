@@ -2,27 +2,21 @@
 
 [![skills.sh installs](https://skills.sh/b/blader/humanizer)](https://skills.sh/blader/humanizer)
 
-Humanizer rewrites AI-sounding text so it reads like a person wrote it, without changing what it says. The skill is a Markdown file, so it works with any agent that supports skills.
+Humanizer rewrites AI-sounding text so it reads like a person wrote it, without changing what it says. Because it is just Markdown, it works with any agent that supports skills.
 
 ## How it works
 
-Humanizer uses 35 patterns drawn from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. It runs a three-step rewrite:
-
-1. Draft a more natural version without copying the source's shape.
-2. Check the draft for remaining AI patterns and any changed or invented claims.
-3. Revise again and return the final version.
-
-Humanizer does not add facts, names, numbers, dates, quotes, or citations. Any new detail must come from the source or the writer. For personal writing, it keeps the writer's personality. For technical or reference text, it stays neutral and plain. A writing sample can override the default style rules so the result sounds like the writer.
-
-With pasted text, Humanizer returns a draft, a short audit, and the final rewrite. In file mode, it rewrites the prose in place and leaves code, data, frontmatter, and link targets alone.
-
-### Wikipedia's main point
+Humanizer uses 35 patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. It makes a first pass without treating the original structure as fixed. Then it checks the draft against those patterns and the original claims before rewriting whatever still needs work.
 
 > "LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases."
 
+It does not make things up. A name, number, date, quote, citation, or other factual detail must come from the source or the writer. For personal writing, Humanizer keeps the writer's style. Technical and reference prose stays neutral and plain. If you provide a writing sample, Humanizer follows that sample instead of its default style rules.
+
+When you paste text, Humanizer shows its work before giving you the final version. You see the first rewrite and a short critique of anything that still sounds artificial. Point it at a file and it changes only the prose, leaving code, data, frontmatter, and link targets alone.
+
 ## Usage
 
-Use a slash command or ask the agent directly:
+Call the skill directly:
 
 ```
 /humanizer
@@ -30,11 +24,13 @@ Use a slash command or ask the agent directly:
 [paste your text here]
 ```
 
+Or ask in plain language:
+
 ```
 Please humanize this text: [your text]
 ```
 
-You can also ask Humanizer to rewrite a file:
+To rewrite a file, give Humanizer its path:
 
 ```
 Humanize the prose in docs/launch-post.md
@@ -42,7 +38,7 @@ Humanize the prose in docs/launch-post.md
 
 ### Match your voice
 
-Provide a writing sample when you want Humanizer to match your style:
+If you want the rewrite to sound more like you, include a sample:
 
 ```
 /humanizer
@@ -54,11 +50,9 @@ Now humanize this text:
 [paste AI text to humanize]
 ```
 
-Humanizer matches the sample's rhythm, word choice, punctuation, and deliberate quirks.
+Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate quirks.
 
-## What it catches
-
-Humanizer covers 35 recurring patterns, grouped below by type.
+## The 35 patterns
 
 ### Content patterns
 
@@ -122,7 +116,7 @@ Humanizer covers 35 recurring patterns, grouped below by type.
 
 ## Full example
 
-*The example includes details that a real writer would provide, such as the month and neighborhood. Humanizer must ask for missing details instead of inventing them.*
+*Details such as the month and neighborhood need to come from the writer. If they are missing, Humanizer should ask instead of making them up.*
 
 **Before (AI-sounding):**
 > I recently spent five unforgettable days in Lisbon, and let me tell you — this city completely stole my heart. From the moment I arrived, I knew I was somewhere truly special.
@@ -152,8 +146,8 @@ Humanizer covers 35 recurring patterns, grouped below by type.
 
 ## Sources
 
-- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) - Main source
-- [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) - Maintains the source page
+- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) is the source for the pattern list.
+- [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) maintains the page.
 
 ## Version history
 
@@ -199,9 +193,9 @@ Install Humanizer with the Skills CLI:
 npx skills add blader/humanizer --global
 ```
 
-Remove `--global` for a project install. Add `--agent <name>` or `--agent '*'` to choose the target agents, then reload their skills.
+Leave off `--global` to install Humanizer only in the current project. Add `--agent <name>` or `--agent '*'` to choose which agents receive it, then reload their skills.
 
-Claude Code 2.1.142 or newer also supports the plugin:
+Claude Code 2.1.142 or newer can install the plugin instead:
 
 ```text
 /plugin marketplace add blader/humanizer
@@ -210,6 +204,6 @@ Claude Code 2.1.142 or newer also supports the plugin:
 
 The plugin command is `/humanizer:humanizer`.
 
-For Claude Desktop, download this repository as a ZIP and upload it as a skill.
+In Claude Desktop, download this repository as a ZIP and upload it as a skill.
 
-For a manual install, place `SKILL.md` in the agent's skill folder.
+For a manual install, copy `SKILL.md` into the agent's skill folder.
