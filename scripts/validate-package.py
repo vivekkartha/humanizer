@@ -73,14 +73,14 @@ pattern_numbers = [
     int(number)
     for number in re.findall(r"(?m)^### ([0-9]+)\. ", SKILL)
 ]
-if pattern_numbers != list(range(1, 36)):
-    raise SystemExit(f"Number SKILL.md patterns from 1 through 35: {pattern_numbers}")
+if pattern_numbers != list(range(1, 37)):
+    raise SystemExit(f"Number SKILL.md patterns from 1 through 36: {pattern_numbers}")
 
 readme_numbers = {
     int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README)
 }
-if readme_numbers != set(range(1, 36)):
-    raise SystemExit("List patterns 1 through 35 in the README table")
+if readme_numbers != set(range(1, 37)):
+    raise SystemExit("List patterns 1 through 36 in the README table")
 
 if len(SKILL.splitlines()) > 500:
     raise SystemExit("Keep SKILL.md at 500 lines or fewer")
