@@ -155,7 +155,7 @@ State the useful claim directly. Keep a contrast when both sides add information
 **Before (paragraph structure):**
 > A career can look promising and fail. A relationship can feel important and end. A skill can take years and remain useless. These decisions rarely explain themselves.
 **After:**
-> A promising career can stall, and a relationship can matter even if it ends. Decisions like these may take years to make sense.
+> A promising career can stall, a relationship can matter even if it ends, and a hard-won skill may never prove useful. Decisions like these may take years to make sense.
 
 Check that every example adds a distinct idea. Merge examples, develop the strongest one, or vary the structure when they do not. Keep three real items when the meaning needs three.
 
@@ -417,9 +417,9 @@ One rejected option may be valid. Several short, unrelated rejections are a stro
 **Before:**
 > The Stanford Encyclopedia of Philosophy places this tension at the centre of Camus's work.
 **After:**
-> This tension is central to Camus's work.
+> The Stanford Encyclopedia of Philosophy describes this tension as central to Camus's work.
 
-Do not add a finding or claim that is absent from the source text. In essays and blog posts, optional reading may move to a short references section when the input already contains the links. Do not create links or a references section from nothing. In file mode, preserve link targets.
+Treat an attributed interpretation as part of the claim. Do not turn a source's view into an unqualified statement. Do not add a finding or claim that is absent from the source text. In essays and blog posts, optional reading may move to a short references section when the input already contains the links. Do not create links or a references section from nothing. In file mode, preserve link targets.
 
 ## Check for false positives
 
@@ -435,7 +435,7 @@ A person may use some of these patterns. Do not treat any item below as proof by
 - **Common transition words in isolation.** *Additionally*, *moreover*, *consequently* are AI-coded only when piled up. One *however* is not a tell.
 - **Curly quotes alone.** macOS, Word, Google Docs, and most CMSes auto-curl by default. Curly quotes only count when stacked with other tells.
 - **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
-- **One short sentence for emphasis.** Flag dramatic fragments only when several appear in a row.
+- **One short sentence for emphasis.** Flag it only when it repeats nearby prose or interrupts it without adding meaning. Several dramatic fragments in a row are a stronger signal.
 - **Deliberate repeated openings.** Writers may repeat an opening to build rhythm or pressure, as in "She came. She saw. She conquered." Change it only when the repetition adds nothing.
 - **"Honestly" or "look" mid-sentence.** These are ordinary in casual writing. The tell is the standalone theatrical opener, not the word itself.
 - **Useful limits and disclaimers.** Keep scope statements, legal and safety notices, real corrections, named objections, replies, and FAQ answers.
