@@ -6,7 +6,7 @@ Humanizer rewrites AI-sounding text so it reads like a person wrote it, without 
 
 ## How it works
 
-Humanizer uses 35 patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. It makes a first pass without treating the original structure as fixed. Then it checks the draft against those patterns and the original claims before rewriting whatever still needs work.
+Humanizer uses 36 patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. It makes a first pass without treating the original structure as fixed. Then it checks the full draft against those patterns and the original claims before rewriting whatever still needs work.
 
 > "LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases."
 
@@ -52,7 +52,7 @@ Now humanize this text:
 
 Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate quirks.
 
-## The 35 patterns
+## The 36 patterns
 
 ### Content patterns
 
@@ -64,6 +64,7 @@ Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate 
 | 4 | **Sales language** | "nestled within the breathtaking region" | "is a town in the Gonder region" |
 | 5 | **Vague sources** | "Experts believe it plays a crucial role" | Name a real source or remove the claim |
 | 6 | **Formulaic challenges and outlook** | "Despite challenges... continues to thrive" | Keep the facts and remove the sales pitch |
+| 36 | **Empty credibility signals** | "The Stanford Encyclopedia of Philosophy places this tension..." mid-essay | State the claim; move the source to references |
 
 ### Language and grammar patterns
 
@@ -71,8 +72,8 @@ Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate 
 |---|---------|--------|-------|
 | 7 | **Overused AI words** | "Actually... additionally... gated on... quietly... testament... landscape... showcasing" | "also... needs... remain common" |
 | 8 | **Avoiding is and are** | "serves as... features... boasts" | "is... has" |
-| 9 | **Not X but Y and clipped endings** | "It's not just X, it's Y", "..., no guessing" | State the point directly |
-| 10 | **Forced groups of three** | "innovation, inspiration, and insights" | Use the number of items the meaning needs |
+| 9 | **Not X but Y and clipped endings** | "It's not just X, it's Y" across one or two sentences, or "..., no guessing" | State the point directly; keep useful distinctions |
+| 10 | **Forced groups of three** | Three parallel examples plus a lesson | Vary the structure; keep distinct ideas |
 | 11 | **Changing names and repeated openings** | "protagonist... main character... hero" or "She noted... She noted... She filed..." | Use one name or merge the repeated sentences |
 | 12 | **False from X to Y ranges** | "from the Big Bang to dark matter" | List the topics directly |
 | 13 | **Passive voice and missing subjects** | "No configuration file needed" | Name the actor when that helps |
@@ -89,10 +90,10 @@ Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate 
 | 19 | **Curly quotes** | `said “the project”` | `said "the project"` |
 | 26 | **Too many hyphenated word pairs** | “cross-functional, data-driven, client-facing” | Keep only the hyphens grammar needs |
 | 27 | **A fake deeper truth** | "At its core, what matters is..." | State the point directly |
-| 28 | **Announcing the next point** | "Let's dive in", or "one thing that bit me" | Start with the content |
+| 28 | **Announcing the next point** | "Let's dive in" / "This is where X becomes useful" | Replace the announcement with the claim |
 | 29 | **A heading repeated below itself** | "## Performance" + "Speed matters." | Let the heading do the work |
 | 30 | **Writing about the old version** | "This function was added to replace..." | Describe what it does now |
-| 31 | **Forced punchlines and fragments** | "It had no preference. No prior. No nostalgia." | Use natural sentence lengths and specific claims |
+| 31 | **Forced punchlines and fragments** | Repeated fragments or the same mini-conclusion after several sections | Merge lines that manufacture emphasis |
 | 32 | **Formulaic sayings** | "Symmetry is the language of trust" | State the specific claim |
 | 33 | **Fake-candid openings** | "Honestly? It depends..." | State the answer directly |
 | 34 | **Answering objections no one raised** | "This isn't mainly about prompt length..." | Remove the unsupported defense and keep any real claim |
@@ -154,12 +155,13 @@ Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate 
 <details>
 <summary>Show release notes</summary>
 
-- **2.11.2** - Removed the plugin symlink and separate Claude Desktop package. Current Claude Code loads the root `SKILL.md` directly, so GitHub's source ZIP now works in Claude Desktop. No change to the 35 patterns.
-- **2.11.1** - Added a Claude Desktop-ready release package with one regular `humanizer/SKILL.md` file. GitHub's source archive still keeps the plugin symlink (fixes #224). No change to the 35 patterns.
-- **2.11.0** - Rewrote all repo guidance, descriptions, checks, and skill instructions in Plain Language. Kept all 35 patterns and their behavior.
+- **2.12.0** - Added empty credibility signals: in essays, move inline prestige sources to a references section. Expanded whole-draft checks for empty bridges, split contrast formulas, three-example cadence, and mini-conclusions. Package checks now reject example Afters that fail those rules. 36 patterns total.
+- **2.11.2** - Removed the plugin symlink and separate Claude Desktop package. Current Claude Code loads the root `SKILL.md` directly, so GitHub's source ZIP now works in Claude Desktop. No pattern changes.
+- **2.11.1** - Added a Claude Desktop-ready release package with one regular `humanizer/SKILL.md` file. GitHub's source archive still keeps the plugin symlink (fixes #224). No pattern changes.
+- **2.11.0** - Rewrote all repo guidance, descriptions, checks, and skill instructions in Plain Language without changing the pattern set.
 - **2.10.2** - Added the standard `skills/humanizer/` plugin path for Claude Desktop and older loaders. The path links to the root skill, so there is still one prompt (fixes #202).
 - **2.10.1** - Added figurative uses of `gate`, `gated`, and `gating` to §7. Kept real technical uses, such as feature gating and CI quality gates.
-- **2.10.0** - Added patterns #34 and #35 for old drafting ideas left in final text. Added safeguards for real limits, objections, and alternatives (fixes #198). Also improved §24 and the final rewrite step. 35 patterns total.
+- **2.10.0** - Added patterns #34 and #35 for old drafting ideas left in final text. Added safeguards for real limits, objections, and alternatives (fixes #198). Also improved §24 and the final rewrite step.
 - **2.9.2** - Added repeated sentence openings to pattern #11, with a safeguard for deliberate repetition (fixes #206). Expanded §28 to cover casual announcements. 33 patterns total.
 - **2.9.1** - Improved installation and package checks. Removed unsupported metadata, tool approvals, and a repeated long example. 33 patterns total.
 - **2.9.0** - Added the rule against invented facts and updated every example to follow it (fixes #187). Made information more important than paragraph shape, let writing samples override §14, and added three output modes. 33 patterns total.

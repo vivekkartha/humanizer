@@ -7,7 +7,7 @@ description: |
   voice, filler, or chatbot artifacts. Based on Wikipedia's "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.2"
+  version: "2.12.0"
 ---
 
 # Humanizer: remove AI writing patterns
@@ -128,7 +128,7 @@ Add details such as dates or public actions only when they come from the source 
 > Gallery 825 is LAAA's exhibition space for contemporary art. The gallery has four rooms totaling 3,000 square feet.
 
 ### 9. Not X but Y and clipped negative endings
-**Problem:** AI writing overuses forms such as "Not only...but..." and "It's not just X, it's Y."
+**Problem:** AI writing overuses forms such as "Not only...but..." and "It's not just X, it's Y." The same formula may be split across nearby sentences or paragraphs: "This does not mean X. It means Y," or "X is not Y. It is Z."
 
 It also adds clipped endings such as "no guessing" instead of writing a clear clause.
 **Before:**
@@ -139,13 +139,25 @@ It also adds clipped endings such as "no guessing" instead of writing a clear cl
 > The options come from the selected item, no guessing.
 **After:**
 > The options come from the selected item without forcing the user to guess.
+**Before (split contrast):**
+> This does not mean every choice is equal. It means there is no external system that confirms which choice is right.
+**After:**
+> No external system confirms which choice is right, although the choices still have different consequences.
+
+State the useful claim directly. Keep a contrast when both sides add information or correct a real misunderstanding.
 
 ### 10. Forced groups of three
-**Problem:** AI writing often forces ideas into groups of three to sound complete.
+**Problem:** AI writing often forces ideas into groups of three to sound complete. This can span a sentence, three parallel examples, or three short facts followed by a lesson.
 **Before:**
 > The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.
 **After:**
 > The event includes talks and panels. There's also time for informal networking between sessions.
+**Before (paragraph structure):**
+> A career can look promising and fail. A relationship can feel important and end. A skill can take years and remain useless. These decisions rarely explain themselves.
+**After:**
+> A career can look promising and fail. So can a relationship that felt important and ended, or a skill that took years and remained useless. These decisions rarely explain themselves.
+
+Check that every example adds a distinct idea. Merge examples, develop the strongest one, or vary the structure when they do not. Keep three real items when the meaning needs three.
 
 ### 11. Changing names and repeating sentence openings
 **Problem:** AI writing handles repetition by rule instead of by ear. It may keep renaming the same person or thing. It may also start several sentences with the same subject, often *she* or *he*.
@@ -310,12 +322,16 @@ Before returning the rewrite, search for `—` and `–`. Remove each one unless
 
 ### 28. Announcing the next point
 
-**Phrases to watch:** Let's dive in, let's explore, let's break this down, here's what you need to know, now let's look at, without further ado, heads up, quick note, before I forget
-**Problem:** AI writing often announces the next point instead of stating it. A casual phrase such as "one thing that bit me" can have the same problem. Remove the announcement, not just its formal tone.
+**Phrases to watch:** Let's dive in, let's explore, let's break this down, here's what you need to know, now let's look at, without further ado, heads up, quick note, before I forget, this is where X becomes useful, that difference changes everything, the same applies to X, there is also the question of X
+**Problem:** AI writing often announces the next point instead of stating it. Delete an empty bridge or replace it with the claim that follows. A casual phrase such as "one thing that bit me" can have the same problem. Keep a transition when it explains a real relationship between paragraphs.
 **Before:**
 > Let's dive into how caching works in Next.js. Here's what you need to know.
 **After:**
 > Next.js caches data at multiple layers, including request memoization, the data cache, and the router cache.
+**Before (empty bridge):**
+> This is where Camus becomes useful. Human beings want the world to make sense.
+**After:**
+> Camus described our desire for the world to make sense.
 **Before (casual register):**
 > One thing that bit me hard, so pay attention to this part: the webpack dev server doesn't send the CORS header by default.
 **After:**
@@ -344,11 +360,23 @@ Before returning the rewrite, search for `—` and `–`. Remove each one unless
 > This function uses a hash map for O(1) lookups, avoiding the O(n²) cost of naive iteration.
 
 ### 31. Forced punchlines and dramatic fragments
-**Problem:** AI writing often turns each sentence into a dramatic closing line. One short sentence can add emphasis. A row of short fragments usually feels forced.
+**Problem:** AI writing often turns each sentence into a dramatic closing line. It may also isolate a short sentence to repeat the surrounding point. One short paragraph can be natural; flag a mini-conclusion when it repeats nearby prose or when several sections end with the same kind of line.
 **Before:**
 > Then AlphaEvolve arrived. It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone.
 **After:**
 > AlphaEvolve changed the search because it did not favor symmetry or human-looking designs. That made some of the older assumptions less useful.
+**Before (mini-conclusions):**
+> Caching cuts repeat work.
+>
+> That is the real win.
+>
+> Retries hide brief outages.
+>
+> That is the real win.
+**After:**
+> Caching cuts repeat work.
+>
+> Retries hide brief outages.
 
 ### 32. Formulaic sayings
 
@@ -390,6 +418,20 @@ Remove only the unsupported defense. If it contains a real claim, state that cla
 
 One rejected option may be valid. Several short, unrelated rejections are a stronger sign. Ask what new information each sentence adds. If it only records an earlier edit, rewrite the paragraph around its main point.
 
+### 36. Empty credibility signals
+
+**Signs to watch:** A citation, publication, university, or institution named in the sentence as a badge of authority.
+**Problem:** AI writing drops a prestige name into the prose. In essays and blog posts, that name stops the reader even when the source is real.
+**Before:**
+> The Stanford Encyclopedia of Philosophy places this tension at the centre of Camus's work.
+**After:**
+> This tension is central to Camus's work.
+>
+> ## References
+> Stanford Encyclopedia of Philosophy
+
+In essays and blog posts, the sentence must state the claim, and the source must move to a short references section. A source in references is kept, not removed. Do not invent a URL, title, or finding. Keep existing link targets. Keep the source in the sentence when the format requires a citation, or when the reader needs it there to judge a disputed fact.
+
 ## Check for false positives
 
 ### What not to flag
@@ -404,7 +446,7 @@ A person may use some of these patterns. Do not treat any item below as proof by
 - **Common transition words in isolation.** *Additionally*, *moreover*, *consequently* are AI-coded only when piled up. One *however* is not a tell.
 - **Curly quotes alone.** macOS, Word, Google Docs, and most CMSes auto-curl by default. Curly quotes only count when stacked with other tells.
 - **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
-- **One short sentence for emphasis.** Flag dramatic fragments only when several appear in a row.
+- **One short sentence for emphasis.** Flag a mini-conclusion only when it repeats nearby prose or interrupts it without adding meaning. Several dramatic fragments in a row are a stronger signal.
 - **Deliberate repeated openings.** Writers may repeat an opening to build rhythm or pressure, as in "She came. She saw. She conquered." Change it only when the repetition adds nothing.
 - **"Honestly" or "look" mid-sentence.** These are ordinary in casual writing. The tell is the standalone theatrical opener, not the word itself.
 - **Useful limits and disclaimers.** Keep scope statements, legal and safety notices, real corrections, named objections, replies, and FAQ answers.
@@ -445,7 +487,8 @@ These details often carry the writer's voice. Keep them unless they hurt the mea
    - **"What still sounds AI-generated?"**
    - **"Did the rewrite add or remove any fact, name, number, date, quote, citation, ranking, or other claim?"**
    Treat any unsupported addition or lost claim as an error.
-4. Write the final version. State each point naturally instead of patching one flagged phrase at a time. If a sentence stays awkward, rewrite the paragraph around its main point. Apply the dash rule in §14.
+4. Audit the whole draft for empty bridges, repeated paragraph shapes, mini-conclusions, and prestige names that belong in references. Confirm that every original claim remains and no new fact was added.
+5. Write the final version. State each point naturally instead of patching one flagged phrase at a time. If a sentence stays awkward, rewrite the paragraph around its main point. Apply the dash rule in §14.
 
 Return the result required by [How to return the result](#how-to-return-the-result).
 
