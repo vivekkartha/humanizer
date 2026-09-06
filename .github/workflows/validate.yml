@@ -21,6 +21,10 @@ jobs:
       - name: Check package files
         run: python3 scripts/validate-package.py
       - name: Check skill discovery
+        # Pin skill validator version for reproducibility.
+        # Update by checking https://registry.npmjs.org/skills for latest versions.
         run: npx --yes skills@1.5.23 add . --list
       - name: Check Claude marketplace
+        # Pin @anthropic-ai/claude-code version for reproducible validation.
+        # Update by checking https://www.npmjs.com/package/@anthropic-ai/claude-code for latest versions.
         run: npx --yes @anthropic-ai/claude-code@2.1.263 plugin validate .
