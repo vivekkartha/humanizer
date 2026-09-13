@@ -1,15 +1,19 @@
 # Humanizer
 
-[![skills.sh installs](https://skills.sh/b/blader/humanizer)](https://skills.sh/blader/humanizer)
+[![skills.sh installs](https://skills.sh/b/vivekkartha/humanizer)](https://skills.sh/vivekkartha/humanizer)
 
 Humanizer rewrites AI-sounding text so it reads like a person wrote it, without changing what it says. Because it is just Markdown, it works with any agent that supports skills.
 
+This repo is an up-to-date fork of [blader/humanizer](https://github.com/blader/humanizer).
+
+In essays and blog posts, a prestige source in the sentence moves to a short references section, and the source is kept (§17). The whole-draft check also looks for empty bridges and prestige names that belong in references.
+
 ## Installation
 
-Install Humanizer with the Skills CLI:
+Install this fork with the Skills CLI:
 
 ```bash
-npx skills add blader/humanizer --global
+npx skills add vivekkartha/humanizer --global
 ```
 
 Leave off `--global` to install Humanizer only in the current project. Add `--agent <name>` or `--agent '*'` to choose which agents receive it, then reload their skills. The skill answers to `/humanizer`.
@@ -17,7 +21,7 @@ Leave off `--global` to install Humanizer only in the current project. Add `--ag
 Claude Code 2.1.142 or newer can install the plugin instead:
 
 ```text
-/plugin marketplace add blader/humanizer
+/plugin marketplace add vivekkartha/humanizer
 /plugin install humanizer@humanizer
 ```
 
